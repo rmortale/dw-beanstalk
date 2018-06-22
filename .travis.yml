@@ -7,6 +7,9 @@ env:
   global:
     - COMMIT=${TRAVIS_COMMIT::8}
 
+before_deploy:
+   zip $COMMIT-transfer target/*.jar config.yml Procfile
+   
 deploy:
    provider: elasticbeanstalk
    app: "dw-os-test"
@@ -14,6 +17,7 @@ deploy:
    access_key_id: $AWS_KEY
    secret_access_key: $AWS_SECRET
    region: "eu-west-1"
+   zip_file: $COMMIT-transfer.zip
    bucket_name: "elasticbeanstalk-eu-west-1-601912882130"
    skip_cleanup: "true"
    on:
