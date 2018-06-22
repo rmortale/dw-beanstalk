@@ -1,0 +1,9 @@
+logging:
+  level: INFO
+  loggers:
+    ch.dulce: DEBUG
+
+server:
+  applicationConnectors:
+  - type: http 
+    port: 5000
