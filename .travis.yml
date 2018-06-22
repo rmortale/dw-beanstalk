@@ -1,3 +1,16 @@
 language: java
 
+jdk:
+  - openjdk8
+  
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
 
+deploy:
+   provider: elasticbeanstalk
+   app: "dw-os-test"
+   env: "dw-os-test-dev"
+   bucket_name: "elasticbeanstalk-eu-west-1-601912882130"
+   
+ 
