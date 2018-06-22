@@ -11,6 +11,8 @@ deploy:
    provider: elasticbeanstalk
    app: "dw-os-test"
    env: "dw-os-test-dev"
+   access_key_id: $AWS_KEY
+   secret_access_key: $AWS_SECRET
+   region: "eu-west-1"
    bucket_name: "elasticbeanstalk-eu-west-1-601912882130"
    
- 
