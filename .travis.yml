@@ -1,5 +1,10 @@
 language: java
 
+# safelist
+branches:
+  only:
+  - master
+
 jdk:
   - openjdk8
   
@@ -8,7 +13,7 @@ env:
     - COMMIT=${TRAVIS_COMMIT::8}
 
 before_deploy:
-   zip $COMMIT-transfer target/*.jar config.yml Procfile
+   zip $COMMIT-transfer target/dw*.jar config.yml Procfile
    
 deploy:
    provider: elasticbeanstalk
