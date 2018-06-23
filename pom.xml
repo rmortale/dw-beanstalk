@@ -87,7 +87,16 @@
                     </archive>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>1.9.0</version>
+                <configuration>
+                    <gitFlowConfig>
+                        <developmentBranch>master</developmentBranch>
+                    </gitFlowConfig>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
@@ -99,36 +108,8 @@
                             <goal>revision</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>validate-the-git-infos</id>
-                        <goals>
-                            <goal>validateRevision</goal>
-                        </goals>
-                        <!-- *NOTE*: The default phase of validateRevision is verify, but in case you want to change it, you can do so by adding the phase here -->
-                        <phase>verify</phase>
-                    </execution>
                 </executions>
                 <configuration>
-                    <validationProperties>
-                        <!-- verify that the project version does not end with `-SNAPSHOT` -->
-                        <validationProperty>
-                            <name>validating project version</name>
-                            <value>${project.version}</value>
-                            <shouldMatchTo>^[0-9\.]*$</shouldMatchTo>
-                        </validationProperty>
-                        <!-- verify that the current repository is not dirty -->
-                        <validationProperty>
-                            <name>validating git dirty</name>
-                            <value>${git.dirty}</value>
-                            <shouldMatchTo>false</shouldMatchTo>
-                        </validationProperty>
-                        <!-- verify that the current commit has a tag -->
-                        <validationProperty>
-                            <name>validating current commit has a tag</name>
-                            <value>${git.closest.tag.commit.count}</value>
-                            <shouldMatchTo>0</shouldMatchTo>
-                        </validationProperty>
-                    </validationProperties>
                     <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
                     <prefix>git</prefix>
                     <verbose>false</verbose>
