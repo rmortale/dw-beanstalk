@@ -3,7 +3,7 @@ language: java
 # safelist
 branches:
   except:
-  - /^v\d+\.\d+\.\d+$/
+  - /^\d+\.\d+$/
 
 jdk:
   - openjdk8
