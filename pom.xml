@@ -114,9 +114,7 @@
                         <validationProperty>
                             <name>validating project version</name>
                             <value>${project.version}</value>
-                            <shouldMatchTo><![CDATA[^.*(?<!--NAPSHOT)$]]></shouldMatchTo>
-                                                            <!-- for future reference on this particular regex, please refer to lookahead and lookbehind expressions -->
-                            <!-- we could also use: <shouldMatchTo>^[0-9\.]*$</shouldMatchTo> -->
+                            <shouldMatchTo>^[0-9\.]*$</shouldMatchTo>
                         </validationProperty>
                         <!-- verify that the current repository is not dirty -->
                         <validationProperty>
