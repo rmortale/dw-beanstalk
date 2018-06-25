@@ -1,5 +1,6 @@
 package ch.dulce;
 
+import ch.dulce.version.VersionResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -17,13 +18,13 @@ public class TestApplication extends Application<TestConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<TestConfiguration> bootstrap) {
-        // TODO: application initialization
+
     }
 
     @Override
-    public void run(final TestConfiguration configuration,
-                    final Environment environment) {
-        // TODO: implement application
+    public void run(final TestConfiguration configuration, final Environment environment) {
+        VersionResource vr = new VersionResource();
+        environment.jersey().register(vr);
     }
 
 }
