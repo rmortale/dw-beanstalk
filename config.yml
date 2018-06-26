@@ -5,7 +5,7 @@ logging:
 
 server:
   type: simple
-  applicationContextPath: /application
+  applicationContextPath: /
   adminContextPath: /admin
   connector:
     type: http
