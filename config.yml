@@ -4,6 +4,21 @@ logging:
     ch.dulce: DEBUG
 
 server:
-  applicationConnectors:
-  - type: http 
+  type: simple
+  applicationContextPath: /application
+  adminContextPath: /admin
+  connector:
+    type: http
     port: 5000
+
+database:
+  driverClass: com.mysql.jdbc.Driver
+
+  # the username
+  user: ${DB_USER:-root}
+
+  # the password
+  password: ${DB_PASSWORD:-my-secret-pw}
+
+  # the JDBC URL
+  url: ${DB_URL:-jdbc:mysql://localhost:3306/awsdb}
