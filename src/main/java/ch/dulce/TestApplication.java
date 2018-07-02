@@ -8,6 +8,8 @@ import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.jdbi.v3.core.Jdbi;
+import io.dropwizard.migrations.MigrationsBundle;
+import io.dropwizard.db.DataSourceFactory;
 
 public class TestApplication extends Application<TestConfiguration> {
 
@@ -22,6 +24,14 @@ public class TestApplication extends Application<TestConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<TestConfiguration> bootstrap) {
+        bootstrap.addBundle(new MigrationsBundle<TestConfiguration>() {
+            @Override
+            public DataSourceFactory getDataSourceFactory(TestConfiguration configuration) {
+                return configuration.getDataSourceFactory();
+            }
+        });
+
+
         // Enable variable substitution with environment variables
         bootstrap.setConfigurationSourceProvider(
                 new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(),
