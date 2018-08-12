@@ -2,6 +2,7 @@ package ch.dulce;
 
 import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.dropwizard.client.JerseyClientConfiguration;
 import io.dropwizard.db.DataSourceFactory;
 import org.hibernate.validator.constraints.*;
 
@@ -25,4 +26,17 @@ public class TestConfiguration extends Configuration {
         return database;
     }
 
+    @Valid
+    @NotNull
+    private JerseyClientConfiguration jerseyClient = new JerseyClientConfiguration();
+
+    @JsonProperty("jerseyClient")
+    public JerseyClientConfiguration getJerseyClientConfiguration() {
+        return jerseyClient;
+    }
+
+    @JsonProperty("jerseyClient")
+    public void setJerseyClientConfiguration(JerseyClientConfiguration jerseyClient) {
+        this.jerseyClient = jerseyClient;
+    }
 }
